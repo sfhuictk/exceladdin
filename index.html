@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>默认样式</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <style>
+        html,
+        body,
+        #container {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='container' style="width:100%; height: 100%;">
+        <script type="text/javascript"
+            src="https://webapi.amap.com/maps?v=1.4.13&key=41f7d76bf0acc9e33fb3d0e054b5b585"></script>
+        <script type="text/javascript">
+            var marker;
+            var map = new AMap.Map("container", {
+                center: [100.9809171101837, 22.785927021982616],
+                zoom: 18,
+                resizeEnable: true
+            });
+
+            //创建右键菜单
+            var contextMenu = new AMap.ContextMenu();
+
+            //右键添加Marker标记
+            contextMenu.addItem("标记位置", function (e) {
+                if (marker) {
+                    marker.setPosition(contextMenuPositon);
+                } else {
+                    marker = new AMap.Marker({
+                        map: map,
+                        position: contextMenuPositon //基点位置
+                    });
+                }
+            }, 2);
+
+            contextMenu.addItem("删除标记", function (e) {
+                if (marker) {
+                    marker.setMap(null);
+                    marker = null;
+                }
+            }, 2);
+
+            //地图绑定鼠标右击事件——弹出右键菜单
+            map.on('rightclick', function (e) {
+                contextMenu.open(map, e.lnglat);
+                contextMenuPositon = e.lnglat;
+            });
+
+            contextMenu.open(map, lnglat);
+        </script>
+</body>
+
+</html>
