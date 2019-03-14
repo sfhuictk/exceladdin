@@ -18,47 +18,54 @@
 </head>
 
 <body>
-    <div id='container' style="width:100%; height: 100%;">
-        <script type="text/javascript"
-            src="https://webapi.amap.com/maps?v=1.4.13&key=41f7d76bf0acc9e33fb3d0e054b5b585"></script>
-        <script type="text/javascript">
-            var marker;
-            var map = new AMap.Map("container", {
-                center: [100.9809171101837, 22.785927021982616],
-                zoom: 18,
-                resizeEnable: true
-            });
+    <div id='container' style="width:100%; height: 100%;"></div>
+    <div id="tip" class="info" style="min-width:auto;cursor:pointer;">
+        <img src="https://webapi.amap.com/theme/v1.3/markers/n/mark_bs.png" style="width: 8px; height: 13px;"> 施工位置
+    </div>
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.13&key=41f7d76bf0acc9e33fb3d0e054b5b585"></script>
+    <script type="text/javascript">
+        var marker;
+        var map = new AMap.Map("container", {
+            center: [100.9809171101837, 22.785927021982616],
+            zoom: 18,
+            resizeEnable: true
+        });
 
-            //创建右键菜单
-            var contextMenu = new AMap.ContextMenu();
+        document.querySelector("#tip").onclick = function() {
+            if(marker){
+                map.setCenter(contextMenuPositon);
+            }
+        }
 
-            //右键添加Marker标记
-            contextMenu.addItem("标记位置", function (e) {
-                if (marker) {
-                    marker.setPosition(contextMenuPositon);
-                } else {
-                    marker = new AMap.Marker({
-                        map: map,
-                        position: contextMenuPositon //基点位置
-                    });
-                }
-            }, 2);
+        //创建右键菜单
+        var contextMenu = new AMap.ContextMenu();
 
-            contextMenu.addItem("删除标记", function (e) {
-                if (marker) {
-                    marker.setMap(null);
-                    marker = null;
-                }
-            }, 2);
+        //右键添加Marker标记
+        contextMenu.addItem("标记位置", function (e) {
+            if (marker) {
+                marker.setPosition(contextMenuPositon);
+            } else {
+                marker = new AMap.Marker({
+                    map: map,
+                    position: contextMenuPositon //基点位置
+                });
+            }
+        }, 2);
 
-            //地图绑定鼠标右击事件——弹出右键菜单
-            map.on('rightclick', function (e) {
-                contextMenu.open(map, e.lnglat);
-                contextMenuPositon = e.lnglat;
-            });
+        contextMenu.addItem("删除标记", function (e) {
+            if (marker) {
+                marker.setMap(null);
+                marker = null;
+            }
+        }, 2);
 
-            contextMenu.open(map, lnglat);
-        </script>
+        //地图绑定鼠标右击事件——弹出右键菜单
+        map.on('rightclick', function (e) {
+            contextMenu.open(map, e.lnglat);
+            contextMenuPositon = e.lnglat;
+        });
+    </script>
 </body>
 
 </html>
