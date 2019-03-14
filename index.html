@@ -49,7 +49,7 @@
 
         document.querySelector("#tip").onclick = function () {
             if (marker) {
-                map.setCenter(contextMenuPositon);
+                map.setCenter(marker.getPosition());
             }
         }
 
