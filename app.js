@@ -1,5 +1,4 @@
  
-    <script type="text/javascript">
         var marker;
         var map = new AMap.Map("container", {
             center: [100.9809171101837, 22.785927021982616],
@@ -53,4 +52,3 @@
             contextMenu.open(map, e.lnglat);
             contextMenuPositon = e.lnglat;
         });
-    </script>
