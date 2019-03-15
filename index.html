@@ -75,14 +75,14 @@
                     height: 128,
                 });
             });
-        }, 0);
 
+        }, 0);
+    
         //右键显示全国范围
-        contextMenu.addItem("放到最大", function () {
+        contextMenu.addItem("放到最大", function (e) {
             map.setZoom(18);
         }, 1);
-    
-        //删除标记
+
         contextMenu.addItem("删除标记", function (e) {
             if (marker) {
                 marker.setMap(null);
