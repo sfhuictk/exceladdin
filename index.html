@@ -37,7 +37,7 @@
 <script type="text/javascript"
         src="https://webapi.amap.com/maps?v=1.4.13&key=41f7d76bf0acc9e33fb3d0e054b5b585"></script>
     <script type="text/javascript" src="app.js"></script>
-    var marker;
+        var marker;
         var map = new AMap.Map("container", {
             center: [100.9809171101837, 22.785927021982616],
             zoom: 18,
@@ -79,7 +79,7 @@
         }, 0);
     
         //右键显示全国范围
-        contextMenu.addItem("缩放至全国范围", function (e) {
+        contextMenu.addItem("放到最大", function (e) {
             map.setZoom(18);
         }, 1);
 
