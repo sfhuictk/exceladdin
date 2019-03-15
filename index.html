@@ -76,7 +76,12 @@
                 });
             });
 
-        }, 2);
+        }, 0);
+    
+        //右键显示全国范围
+        contextMenu.addItem("缩放至全国范围", function (e) {
+            map.setZoom(18);
+        }, 1);
 
         contextMenu.addItem("删除标记", function (e) {
             if (marker) {
