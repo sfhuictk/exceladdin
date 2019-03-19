@@ -6,6 +6,24 @@ var map = new AMap.Map("container", {
 });
 $(".amap-logo").remove();
 $(".amap-copyright").remove();
+AMap.plugin('AMap.Geolocation', function () {
+    var geolocation = new AMap.Geolocation({
+        enableHighAccuracy: true,//是否使用高精度定位，默认:true
+        timeout: 10000,          //超过10秒后停止定位，默认：5s
+        buttonPosition: 'LB',    //定位按钮的停靠位置
+        buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+        zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
+    });
+    map.addControl(geolocation);
+    geolocation.getCurrentPosition(function (status, result) {
+        if (status == 'complete') {
+            onComplete(result)
+        } else {
+            onError(result)
+        }
+    });
+});
+
 document.querySelector("#tip").onclick = function () {
     if (marker) {
         map.setCenter(marker.getPosition());
@@ -44,6 +62,10 @@ contextMenu.addItem("删除标记", function (e) {
     }
 }, 2);
 //地图绑定鼠标右击事件——弹出右键菜单
+map.on('click', function (e) {
+    contextMenu.open(map, e.lnglat);
+    contextMenuPositon = e.lnglat;
+});
 map.on('rightclick', function (e) {
     contextMenu.open(map, e.lnglat);
     contextMenuPositon = e.lnglat;
