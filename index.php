@@ -6,8 +6,7 @@
     <title>GPS</title>
     <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
     <script type="text/javascript" src="jquery-3.3.1.slim.min.js"></script>
-    <script type="text/javascript" src="qrcode.js"></script>    
-    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
     <style>
         html,
         body,
@@ -33,5 +32,6 @@
     </div>
     <div id="qrcode"></div>
 </body>
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=41f7d76bf0acc9e33fb3d0e054b5b585"></script>   
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.13&key=41f7d76bf0acc9e33fb3d0e054b5b585"></script>
+    <script type="text/javascript" src="app.js"></script>
 </html>
