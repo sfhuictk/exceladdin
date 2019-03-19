@@ -6,7 +6,7 @@
       "use": "@now/php"
     },
     { "src": "app.js", "use": "@now/static" },
-    { "src": "jquery-3.3.1.slim.min.jsl", "use": "@now/static" },
+    { "src": "jquery-3.3.1.slim.min.js", "use": "@now/static" },
     { "src": "qrcode.js", "use": "@now/static" }
   ],
   "name": "php"
