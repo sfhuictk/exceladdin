@@ -43,6 +43,11 @@ contextMenu.addItem("删除标记", function (e) {
         marker = null;
     }
 }, 2);
+contextMenu.addItem("圈出范围", function (e) {
+    polyEditor = new AMap.PolygonEditor(map, polygon);
+    polyEditor.addAdsorbPolygons(polygon1)
+    polyEditor.open();
+}, 3);
 //地图绑定鼠标右击事件——弹出右键菜单
 map.on('click', function (e) {
     contextMenu.open(map, e.lnglat);
